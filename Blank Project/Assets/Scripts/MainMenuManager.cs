@@ -25,12 +25,14 @@ public class MainMenuManager : MonoBehaviour
 
     #endregion
 
+    // Funzione chiamata quando il gioco comincia (solo se lo script/oggetto e' attivo)
     private void Start()
     {
-        Initialize();
+        InitializeSettings();
     }
 
-    private void Initialize()
+    // Inizializza il menu delle impostazioni
+    private void InitializeSettings()
     {
         LoadSettings();
         _resolutions = Screen.resolutions;
@@ -51,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
         ResolutionDropdown.RefreshShownValue();
     }
 
-    // Comincia il gioco
+    // Carica la scena del gioco
     public void StartGame()
     {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
@@ -105,7 +107,7 @@ public class MainMenuManager : MonoBehaviour
     // Fai ritornare le opzioni al loro stato precedente
     public void RevertChanges()
     {
-        Initialize();
+        InitializeSettings();
     }
 
     // Salva le impostazioni
