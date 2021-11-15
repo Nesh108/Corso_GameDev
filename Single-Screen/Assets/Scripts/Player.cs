@@ -83,6 +83,11 @@ public class Player : MonoBehaviour
             // Controlliamo se dobbiamo sparare e aggiorniamo le variabili
             HandleShooting();
 
+            // Se il personaggio raggiunge la parte alta dello schermo, togliamo tutta la velocita' nell'asse Y (cosi' cade giu' normalmente)
+            if(transform.position.y >= _maxScreenBounds.y) {
+                _playerRigidbody2D.velocity = new Vector2(_playerRigidbody2D.velocity.x, 0f);
+            }
+
             // Ci assicuriamo che il giocatore non vada fuori dallo schermo e se lo fosse, lo spostiamo dentro
             transform.position = new Vector2(x: Mathf.Clamp(transform.position.x, _minScreenBounds.x, _maxScreenBounds.x),
                                             y: Mathf.Clamp(transform.position.y, _minScreenBounds.y, _maxScreenBounds.y));
