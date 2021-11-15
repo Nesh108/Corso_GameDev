@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
             // Ci assicuriamo che il giocatore non vada fuori dallo schermo e se lo fosse, lo spostiamo dentro
             transform.position = new Vector2(x: Mathf.Clamp(transform.position.x, _minScreenBounds.x, _maxScreenBounds.x),
-                                            y: transform.position.y);
+                                            y: Mathf.Clamp(transform.position.y, _minScreenBounds.y, _maxScreenBounds.y));
 
             // Facciamo il giocatore guardare dove si sta muovendo
             if (Mathf.Abs(_horizontalAxis) > 0)
