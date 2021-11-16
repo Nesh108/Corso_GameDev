@@ -9,6 +9,12 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    void Awake()
+    {
+        // Facciamo ripartire il tempo
+        Time.timeScale = 1f;
+    }
+
     // Funzione che mostra la schermata di GameOver
     public void ShowGameOver()
     {
@@ -21,9 +27,6 @@ public class UIManager : MonoBehaviour
     // Funzione che ricarica il livello attuale
     public void RestartGame()
     {
-        // Facciamo ripartire il tempo
-        Time.timeScale = 1f;
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 

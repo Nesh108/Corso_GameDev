@@ -78,4 +78,28 @@ public class Player : MonoBehaviour
             _verticalMove = 0f;
         }
     }
+
+    // Funzione di Unity che viene chimata quando il personaggio viene a contatto con un "trigger"
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Controlliamo cosa abbiamo toccato
+        if(collision.CompareTag("Coin"))
+        {
+            // Se e' una moneta, la aggiungiamo alla collezione e la distruggiamo
+            AddCoin();
+            Destroy(collision.gameObject);
+        }
+        else if(collision.CompareTag("Castle"))
+        {
+            // Se e' il castello, il gioco finisce
+            UIManager.Instance.ShowGameOver();
+        }
+    }
+
+    // Funzione che gestice l'aggiunta della moneta raccolta alla collezione
+    void AddCoin()
+    {
+        Debug.Log("Got coin");
+        UIManager.Instance.AddCoin();
+    }
 }
