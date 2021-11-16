@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Castle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Coin
   - Enemy
   - Border
-  - 
+  - PlayerOnly
   - 
   - 
   - 

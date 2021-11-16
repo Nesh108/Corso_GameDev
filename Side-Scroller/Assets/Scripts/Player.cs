@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float MoveSpeed = 5000f;                       // Valore che contiene la velocita' di movimento del giocatore
     [SerializeField] private float JumpSpeed = 1500f;                       // Valore che contiene la velocita' di salto del giocatore
     [SerializeField] private Vector2 MaxVelocity = new Vector2(10f, 25f);   // Velocita' massima consentita al personaggio 
+    [SerializeField] private int Lives = 3;                                 // Quante vite ha il personaggio?
 
     #endregion
 
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _playerRigidbody2D;             // Il 'Corpo Rigido' del personaggio, ci servira' per applicare forze fisiche e poterlo muovere
     private float _horizontalAxis;                      // Variabile che contiene il valore dell'input del giocatore (ex. tastiera o controller)
     private float _horizontalMove, _verticalMove;       // Variabili che contengono i valori di movimento del personaggio 
-
+    private int _currentLives;                          // Variabile dove salviamo il numero attuale di vite
     #endregion
 
     // Funzione chiamata quando il gioco comincia (solo se lo script/oggetto e' attivo)
@@ -31,11 +32,14 @@ public class Player : MonoBehaviour
         // Se non lo troviamo, scriviamo un messaggio d'errore, visto che il componente e' essenziale
         if(_playerRigidbody2D == null)
         {
-            Debug.LogError($"RigidBody2D not found on: {name}");
+            Debug.LogError($"RigidBody2D non trovato in: {name}");
         }
+
+        _currentLives = Lives;
+        UIManager.Instance.SetLives(_currentLives);
     }
 
-    // Funzione chiamata ad ogni 'tick' del motore grafico
+    // Funzione di Unity chiamata ad ogni 'tick' del motore grafico
     // Qui facciamo tutte le cose che devono essere eseguite ad ogni frame
     void Update()
     {
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Funzione chiamata ad ogni 'tick' del motore fisico (la frequenza e' impostata in 'Physics Settings')
+    // Funzione di Unity chiamata ad ogni 'tick' del motore fisico (la frequenza e' impostata in 'Physics Settings')
     // Qui facciamo tutte le cose relative alla fisica (movimenti, forze, gravita, etc.)
     void FixedUpdate()
     {
@@ -101,5 +105,22 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Got coin");
         UIManager.Instance.AddCoin();
+    }
+
+
+    // Funzione che gestisce cosa succede quando il giocatore e' colpito da un nemico
+    public void HitByEnemy()
+    {
+        Debug.Log("Ouch! Colpito da un nemico!");
+
+        // Siamo stati colpiti da un nemico, togliamo una vita, aggiorniamo l'intefaccia
+        _currentLives--;
+        UIManager.Instance.SetLives(_currentLives);
+
+        // E controlliamo se e' gameover
+        if (_currentLives <= 0)
+        {
+            UIManager.Instance.ShowGameOver();
+        }
     }
 }
