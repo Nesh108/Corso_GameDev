@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5570848446098854891}
+  - component: {fileID: 6389133407442468765}
   - component: {fileID: 5570848446098854892}
   - component: {fileID: 5570848446098854893}
   - component: {fileID: 5570848446098854894}
-  - component: {fileID: 6389133407442468765}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -117,6 +117,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6389133407442468765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570848446098854895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4e211fb4e584f49aa09267c5d26494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DieAfter: 0.1
+  BulletPrefab: {fileID: 1804035308274329820, guid: 6516e72fb7f6444a0ba9806b47133181, type: 3}
+  MinBulletSpeed: 5
+  MaxBulletSpeed: 50
+  BulletDuration: 10
+  MinShootingCooldown: 0.5
+  MaxShootingCooldown: 2
 --- !u!212 &5570848446098854892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -215,15 +234,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9050447, y: 0.8971318}
   m_EdgeRadius: 0
---- !u!114 &6389133407442468765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5570848446098854895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4e211fb4e584f49aa09267c5d26494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

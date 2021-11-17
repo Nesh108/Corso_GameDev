@@ -68,7 +68,12 @@ public class BulletMover : MonoBehaviour
             {
                 Destroy(gameObject);
                 collision.gameObject.GetComponent<Enemy>().Die();
-                ShootingPlayerScript.AddKill();
+
+                // Controlla se il script esiste, se si' aggiungiamo una kill
+                if (ShootingPlayerScript != null)
+                {
+                    ShootingPlayerScript.AddKill();
+                }
             }
             else if (collision.gameObject.CompareTag("Player"))
             {
