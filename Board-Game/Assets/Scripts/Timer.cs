@@ -5,6 +5,7 @@ public class Timer : MonoBehaviour
 {
     #region === Variabili accessibili dall'Editor ===
 
+    [SerializeField] private UIManager UIManagerScript;       // Il riferimento allo script che gestisce l'interfaccia
     [SerializeField] private TMPro.TMP_Text TimerText;        // Componente che utilizzeremo per mostrare il numero di monete collezionate
     [SerializeField] private int GameTimeInSeconds = 60;      // Quanto tempo dura il livello
     [SerializeField] private Gradient TextColorGradient;      // Utilizziamo un gradiente per cambiare il colore del testo, per avvertire il giocatore
@@ -27,9 +28,10 @@ public class Timer : MonoBehaviour
             _currentTime -= Time.deltaTime;
             UpdateTimeText();
 
-            if(_currentTime <= 0)
+            // Tempo e' finito => Gameover
+            if (_currentTime <= 0)
             {
-                UIManager.Instance.ShowGameOver();
+                UIManagerScript.ShowGameOver();
             }
         }
     }

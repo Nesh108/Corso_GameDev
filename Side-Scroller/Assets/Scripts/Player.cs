@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     #region === Variabili accessibili dall'Editor ===
 
-    [Header("Player")]
+    [Header("Settings")]
     [SerializeField] private float MoveSpeed = 5000f;                       // Valore che contiene la velocita' di movimento del giocatore
     [SerializeField] private float JumpSpeed = 1500f;                       // Valore che contiene la velocita' di salto del giocatore
     [SerializeField] private Vector2 MaxVelocity = new Vector2(10f, 25f);   // Velocita' massima consentita al personaggio 

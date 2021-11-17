@@ -21,13 +21,14 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    // Funzione di Unity eseguita nonappena il gioco comincia (prima di Start)
     void Awake()
     {
         Instance = this;
         _collectedCoins = 0;
         _totalCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
 
-        // Facciamo ripartire il tempo
+        // Facciamo ripartire il tempo (utile se ricarichiamo il livello di nuovo)
         Time.timeScale = 1f;
     }
 
