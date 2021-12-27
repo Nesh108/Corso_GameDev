@@ -27,6 +27,7 @@ public class Timer : MonoBehaviour
             _currentTime -= Time.deltaTime;
             UpdateTimeText();
 
+            // Tempo e' finito => Gameover
             if(_currentTime <= 0)
             {
                 UIManager.Instance.ShowGameOver();
